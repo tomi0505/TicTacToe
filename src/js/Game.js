@@ -1,7 +1,7 @@
 class Game {
 	constructor() {
 		this.players = ['Computer', 'Player1'];
-		this.activePlayer = null;
+		this.activePlayer = this.randPlayer();
 		this.gameAreaEl = document.querySelector('.game-area-b');
 		this.showGameAreaEl();
 		this.gameAreaElHandler();

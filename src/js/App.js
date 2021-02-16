@@ -12,8 +12,6 @@ class App {
 			const game = new Game();
 			this.games.push(game);
 
-			game.activePlayer = game.randPlayer();			
-
 			e.target.classList.add('start-game-btn-b--hidden');
 			console.log('this.games: ', this.games);
 		});
