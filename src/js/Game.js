@@ -1,7 +1,8 @@
 class Game {
-	constructor(ai, player1, activePlayer) {
+	constructor(ai, player1, player2, activePlayer) {
 		this.ai = ai;
 		this.player1 = player1;
+		this.player2 = player2;
 		this.activePlayer = activePlayer;
 		this.activeArea = null;
 		this.gameAreaEl = document.querySelector('.game-area-b');
@@ -15,11 +16,14 @@ class Game {
 
 			if(this.activeArea) {
 				if(this.activePlayer.id === this.ai.id) {
-					this.ai.move(this.activeArea);
+					this.ai.move();
 					this.activePlayer = this.player1;
 				} else if (this.activePlayer.id === this.player1.id) {
 					this.player1.move(this.activeArea);
 					this.activePlayer = this.ai;
+				} else {
+					this.player2.move(this.activeArea);
+					this.activePlayer = this.player1;
 				}
 			}
 		});
