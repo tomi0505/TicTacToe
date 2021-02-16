@@ -1,0 +1,17 @@
+// RWD
+$breakpoints: (
+  small: 450px,
+  phone: 640px,
+  medium: 768px,
+  tablet: 1024px,
+  large: 1200px,
+  xlarge: 1440px
+);
+
+//FONTS
+$default-font: Verdana, Arial, Tahoma, sans-serif;
+
+// COLORS
+$black: #000000;
+$white: #ffffff;
+$red-color: #ff0000;

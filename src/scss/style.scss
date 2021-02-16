@@ -1,0 +1,23 @@
+@import 'var';
+@import 'mixin';
+@import 'settings';
+
+.game-area-b {
+	display: grid;
+	grid-template-columns: repeat(3, 150px);
+	grid-template-rows: repeat(3, 150px);
+
+	&--hidden {
+		display: none;
+	}
+
+	&__area-simple {
+		border: 1px solid $black;
+	}
+}
+
+.start-game-btn-b {
+	&--hidden {
+		display: none;
+	}
+}
