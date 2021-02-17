@@ -11,7 +11,11 @@ class App {
 		this.activePlayer = null;
 		this.games = [];
 		this.secondPlayerType = 'ai';
-		this.selectGameTypeForm = document.querySelector('.select-game-type-form-b');
+		this.selectGameTypeForm = document.querySelector('.start-game-form-b');
+		this.player1NameInput = document.getElementById('player1NameInput');
+		this.player2NameInput = document.getElementById('player2NameInput');
+		this.gameWithAI = document.getElementById('gameWithAI');
+		this.gameWithUser = document.getElementById('gameWithUser');
 		this.startGameBtn = document.querySelector('.start-game-btn-b');
 		this.startGameBtnHandler();
 	}
@@ -23,16 +27,38 @@ class App {
 		return activePlayer;
 	}
 
+	startGameFormValidation() {
+		if(this.player1NameInput.value.trim() == '') {
+			alert('Wpisz swoje imię');
+			return false;
+		}
+
+		if(this.secondPlayerType === 'user') {
+			if(this.player2NameInput.value.trim() == '') {
+				alert('Wpisz imię 2-giego gracza');
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return true;
+		}
+	}
+
 	startGameBtnHandler() {
 		this.startGameBtn.addEventListener('click', e => {
-			this.secondPlayerType = document.querySelector('input[name="select-game-type-b"]:checked').value;
-			this.activePlayer = this.randPlayer();
+			this.secondPlayerType = document.querySelector('input[name="select-game-type"]:checked').value;
+			const startGameFormValidationOK = this.startGameFormValidation();
 
-			const game = new Game(this.ai, this.player1, this.player2, this.activePlayer);
-			this.games.push(game);
+			if(startGameFormValidationOK) {
+				this.activePlayer = this.randPlayer();
 
-			e.target.classList.add('start-game-btn-b--hidden');
-			this.selectGameTypeForm.classList.add('select-game-type-form-b--hidden');
+				const game = new Game(this.ai, this.player1, this.player2, this.activePlayer);
+				this.games.push(game);
+
+				e.target.classList.add('start-game-btn-b--hidden');
+				this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
+			}
 		});
 	}
 }
