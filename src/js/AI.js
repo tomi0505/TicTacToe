@@ -5,8 +5,20 @@ class AI {
 		this.symbol = symbol;
 	}
 
+	drawArea() {
+		let activesGamesAreasEl = document.querySelectorAll('.game-area-b__area-simple--active');
+		activesGamesAreasEl = [...activesGamesAreasEl];
+
+		const index = Math.floor(Math.random() * activesGamesAreasEl.length);
+		const freeAreaEl = activesGamesAreasEl[index];
+
+		return freeAreaEl;
+	}
+
 	move() {
-		console.log('AI rządzi!');
+		const areaEl = this.drawArea();
+		areaEl.classList.remove('game-area-b__area-simple--active');
+		areaEl.innerHTML = this.symbol;
 	}
 }
 

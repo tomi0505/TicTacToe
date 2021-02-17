@@ -10,23 +10,25 @@ class Game {
 		this.gameAreaElHandler();
 	}
 
-	gameAreaElHandler() {
-		this.gameAreaEl.addEventListener('click', e => {
-			this.activeArea = e.target.closest('.game-area-b__area-simple--active');
+	playerMove(e) {
+		this.activeArea = e.target.closest('.game-area-b__area-simple--active');
 
-			if(this.activeArea) {
-				if(this.activePlayer.id === this.ai.id) {
-					this.ai.move();
-					this.activePlayer = this.player1;
-				} else if (this.activePlayer.id === this.player1.id) {
-					this.player1.move(this.activeArea);
-					this.activePlayer = this.ai;
-				} else {
-					this.player2.move(this.activeArea);
-					this.activePlayer = this.player1;
-				}
+		if(this.activeArea) {
+			if(this.activePlayer.id === this.ai.id) {
+				this.ai.move();
+				this.activePlayer = this.player1;
+			} else if (this.activePlayer.id === this.player1.id) {
+				this.player1.move(this.activeArea);
+				this.activePlayer = this.ai;
+			} else {
+				this.player2.move(this.activeArea);
+				this.activePlayer = this.player1;
 			}
-		});
+		}
+	}
+
+	gameAreaElHandler() {
+		this.gameAreaEl.addEventListener('click', e => this.playerMove(e));
 	}
 
 	showGameAreaEl() {

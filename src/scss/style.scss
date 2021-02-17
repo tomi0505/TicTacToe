@@ -20,6 +20,16 @@
 	&--hidden {
 		display: none;
 	}
+
+	#gameWithUser:checked {
+		& ~ #player2NameInput {
+			display: block;
+		}
+	}
+
+	#player2NameInput {
+		display: none;
+	}
 }
 
 .start-game-btn-b {
