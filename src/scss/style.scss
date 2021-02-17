@@ -16,6 +16,12 @@
 	}
 }
 
+.select-game-type-form-b {
+	&--hidden {
+		display: none;
+	}
+}
+
 .start-game-btn-b {
 	&--hidden {
 		display: none;

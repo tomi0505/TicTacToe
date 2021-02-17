@@ -10,6 +10,8 @@ class App {
 		this.players = [this.ai, this.player1];
 		this.activePlayer = null;
 		this.games = [];
+		this.secondPlayerType = 'ai';
+		this.selectGameTypeForm = document.querySelector('.select-game-type-form-b');
 		this.startGameBtn = document.querySelector('.start-game-btn-b');
 		this.startGameBtnHandler();
 	}
@@ -23,13 +25,14 @@ class App {
 
 	startGameBtnHandler() {
 		this.startGameBtn.addEventListener('click', e => {
+			this.secondPlayerType = document.querySelector('input[name="select-game-type-b"]:checked').value;
 			this.activePlayer = this.randPlayer();
 
 			const game = new Game(this.ai, this.player1, this.player2, this.activePlayer);
 			this.games.push(game);
 
 			e.target.classList.add('start-game-btn-b--hidden');
-			console.log('this.games: ', this.games);
+			this.selectGameTypeForm.classList.add('select-game-type-form-b--hidden');
 		});
 	}
 }
