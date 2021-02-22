@@ -1,35 +1,43 @@
 class Game {
-	constructor(ai, player1, player2, activePlayer) {
-		this.ai = ai;
+	constructor(player1, player2) {
 		this.player1 = player1;
 		this.player2 = player2;
-		this.activePlayer = activePlayer;
+		this.activePlayer = this.randStartPlayer();
 		this.activeArea = null;
 		this.gameAreaEl = document.querySelector('.game-area-b');
 		this.showGameAreaEl();
-		this.gameAreaElHandler();
+		this.gameAreaElClickHandler();
+		this.playerMove();
 	}
 
-	playerMove(e) {
-		this.activeArea = e.target.closest('.game-area-b__area-simple--active');
+	playerMove() {
+		if(this.activePlayer.type === 'ai') {
+			this.activePlayer.move();
+			this.activePlayer = this.player2;
 
-		if(this.activeArea) {
-			if(this.activePlayer.id === this.ai.id) {
-				this.ai.move();
-				this.activePlayer = this.player1;
-			} else if (this.activePlayer.id === this.player1.id) {
-				this.player1.move(this.activeArea);
-				this.activePlayer = this.ai;
-			} else {
-				this.player2.move(this.activeArea);
-				this.activePlayer = this.player1;
-			}
+		} else if (this.activePlayer.type === 'user' && this.userClicked) {
+        this.activePlayer.move(this.activeArea);
+        this.activePlayer = this.player1;
+
+        this.activePlayer.move();
+        this.activePlayer = this.player2;
 		}
 	}
 
-	gameAreaElHandler() {
-		this.gameAreaEl.addEventListener('click', e => this.playerMove(e));
+	randStartPlayer() {
+		const index = Math.floor(Math.random() * 2 + 1);
+		const activePlayer = this[`player${index}`];
+		console.log('activePlayer: ', activePlayer);
+		return activePlayer;
 	}
+
+  gameAreaElClickHandler() {
+    this.gameAreaEl.addEventListener('click', e => {
+      this.userClicked = true;
+      this.activeArea = e.target.closest('.game-area-b__area-simple--active');
+      this.activeArea ? this.playerMove() : null;
+    });
+  }
 
 	showGameAreaEl() {
 		this.gameAreaEl.classList.remove('game-area-b--hidden');

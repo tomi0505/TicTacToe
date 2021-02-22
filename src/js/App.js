@@ -4,13 +4,8 @@ import Player from "./Player";
 
 class App {
 	constructor() {
-		this.ai = new AI(0, 'AI', 'O');
-		this.player1 = new Player(1, 'Tomek', 'X');
-		this.player2 = new Player(2, 'Kowalski', 'O');
-		this.players = [this.ai, this.player1];
-		this.activePlayer = null;
 		this.games = [];
-		this.secondPlayerType = 'ai';
+		this.secondPlayerType = '';
 		this.selectGameTypeForm = document.querySelector('.start-game-form-b');
 		this.player1NameInput = document.getElementById('player1NameInput');
 		this.player2NameInput = document.getElementById('player2NameInput');
@@ -18,13 +13,6 @@ class App {
 		this.gameWithUser = document.getElementById('gameWithUser');
 		this.startGameBtn = document.querySelector('.start-game-btn-b');
 		this.startGameBtnHandler();
-	}
-
-	randPlayer() {
-		const index = Math.floor(Math.random() * this.players.length);
-		const activePlayer = this.players[index];
-
-		return activePlayer;
 	}
 
 	startGameFormValidation() {
@@ -51,10 +39,19 @@ class App {
 			const startGameFormValidationOK = this.startGameFormValidation();
 
 			if(startGameFormValidationOK) {
-				this.activePlayer = this.randPlayer();
+				if(this.secondPlayerType === 'ai') {
+					const userAI = new AI(0, 'AI', 'O');
+					const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
 
-				const game = new Game(this.ai, this.player1, this.player2, this.activePlayer);
-				this.games.push(game);
+					const game = new Game(userAI, userPlayer1);
+					this.games.push(game);
+				} else if (this.secondPlayerType === 'user') {
+					const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
+					const userPlayer2 = new Player(2, this.player2NameInput.value, 'O');
+
+					const game = new Game(userPlayer1, userPlayer2);
+					this.games.push(game);
+				}
 
 				e.target.classList.add('start-game-btn-b--hidden');
 				this.selectGameTypeForm.classList.add('start-game-form-b--hidden');

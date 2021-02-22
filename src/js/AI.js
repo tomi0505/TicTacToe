@@ -1,6 +1,7 @@
 class AI {
 	constructor(id, name, symbol) {
 		this.id = id;
+		this.type = 'ai';
 		this.name = name;
 		this.symbol = symbol;
 	}
@@ -17,8 +18,11 @@ class AI {
 
 	move() {
 		const areaEl = this.drawArea();
-		areaEl.classList.remove('game-area-b__area-simple--active');
-		areaEl.innerHTML = this.symbol;
+
+		if(areaEl) {
+      areaEl.classList.remove('game-area-b__area-simple--active');
+      areaEl.innerHTML = this.symbol;
+    }
 	}
 }
 
