@@ -27,7 +27,6 @@ class Game {
 	randStartPlayer() {
 		const index = Math.floor(Math.random() * 2 + 1);
 		const activePlayer = this[`player${index}`];
-		console.log('activePlayer: ', activePlayer);
 		return activePlayer;
 	}
 
@@ -35,7 +34,7 @@ class Game {
     this.gameAreaEl.addEventListener('click', e => {
       this.userClicked = true;
       this.activeArea = e.target.closest('.game-area-b__area-simple--active');
-      this.activeArea ? this.playerMove() : null;
+      this.activeArea ? this.playerMove() : 'nie ma pola do gry';
     });
   }
 

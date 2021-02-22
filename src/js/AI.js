@@ -4,9 +4,10 @@ class AI {
 		this.type = 'ai';
 		this.name = name;
 		this.symbol = symbol;
+    this.choosedGameAreas = [];
 	}
 
-	drawArea() {
+	drawFreeArea() {
 		let activesGamesAreasEl = document.querySelectorAll('.game-area-b__area-simple--active');
 		activesGamesAreasEl = [...activesGamesAreasEl];
 
@@ -17,11 +18,13 @@ class AI {
 	}
 
 	move() {
-		const areaEl = this.drawArea();
+		const activeArea = this.drawFreeArea();
 
-		if(areaEl) {
-      areaEl.classList.remove('game-area-b__area-simple--active');
-      areaEl.innerHTML = this.symbol;
+		if(activeArea) {
+      const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
+      this.choosedGameAreas.push(activeAreaIndex);
+      activeArea.classList.remove('game-area-b__area-simple--active');
+      activeArea.innerHTML = this.symbol;
     }
 	}
 }
