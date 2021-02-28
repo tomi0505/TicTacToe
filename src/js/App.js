@@ -43,11 +43,17 @@ class App {
 					const userAI = new AI(0, 'AI', 'O');
 					const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
 
+          userAI.secondPlayer = userPlayer1;
+          userPlayer1.secondPlayer = userAI;
+
 					const game = new Game(userAI, userPlayer1);
 					this.games.push(game);
 				} else if (this.secondPlayerType === 'user') {
 					const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
 					const userPlayer2 = new Player(2, this.player2NameInput.value, 'O');
+
+          userPlayer1.secondPlayer = userPlayer2;
+          userPlayer2.secondPlayer = userPlayer1;
 
 					const game = new Game(userPlayer1, userPlayer2);
 					this.games.push(game);

@@ -5,6 +5,7 @@ class AI {
 		this.name = name;
 		this.symbol = symbol;
     this.choosedGameAreas = [];
+    this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b');
 	}
 
 	drawFreeArea() {
@@ -17,15 +18,29 @@ class AI {
 		return freeAreaEl;
 	}
 
-	move() {
-		const activeArea = this.drawFreeArea();
+	drawAITimeThinking() {
+	  const timeThinking = Math.floor(Math.random() * 6);
+	  const timeThinkingInMiliseconds = timeThinking * 1000;
 
-		if(activeArea) {
-      const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
-      this.choosedGameAreas.push(activeAreaIndex);
-      activeArea.classList.remove('game-area-b__area-simple--active');
-      activeArea.innerHTML = this.symbol;
-    }
+	  return timeThinkingInMiliseconds;
+  }
+
+	move() {
+    this.currentPlayerMovingEl.textContent = this.name;
+
+    setTimeout(() => {
+      const activeArea = this.drawFreeArea();
+
+      if(activeArea) {
+        const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
+        this.choosedGameAreas.push(activeAreaIndex);
+        activeArea.classList.remove('game-area-b__area-simple--active');
+        activeArea.innerHTML = this.symbol;
+
+        this.secondPlayer.nextMove = true;
+        this.secondPlayer.move();
+      }
+    }, this.drawAITimeThinking())
 	}
 }
 
