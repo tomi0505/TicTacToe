@@ -5,8 +5,22 @@ class AI {
 		this.name = name;
 		this.symbol = symbol;
     this.choosedGameAreas = [];
+    this.winGamePattern = {
+      x1: [0, 1, 2],
+      x2: [3, 4, 5],
+      x3: [6, 7, 8],
+      y1: [0, 3, 6],
+      y2: [1, 4, 7],
+      y3: [2, 5, 8],
+      z1: [0, 4, 8],
+      z2: [2, 4, 6]
+    };
     this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b');
 	}
+
+  doIWin() {
+    console.log(this.choosedGameAreas);
+  }
 
 	drawFreeArea() {
 		let activesGamesAreasEl = document.querySelectorAll('.game-area-b__area-simple--active');
@@ -26,7 +40,7 @@ class AI {
   }
 
 	move() {
-    this.currentPlayerMovingEl.textContent = this.name;
+    this.currentPlayerMovingEl.textContent = `${this.name} myśli...`;
 
     setTimeout(() => {
       const activeArea = this.drawFreeArea();
@@ -36,6 +50,8 @@ class AI {
         this.choosedGameAreas.push(activeAreaIndex);
         activeArea.classList.remove('game-area-b__area-simple--active');
         activeArea.innerHTML = this.symbol;
+
+        this.doIWin();
 
         this.secondPlayer.nextMove = true;
         this.secondPlayer.move();
