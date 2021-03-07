@@ -2,6 +2,12 @@
 @import 'mixin';
 @import 'settings';
 
+.current-player-moving-b {
+  &--hidden {
+    display: none;
+  }
+}
+
 .game-area-b {
 	display: grid;
 	grid-template-columns: repeat(3, 150px);

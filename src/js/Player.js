@@ -18,7 +18,7 @@ class Player {
     this.nextMove = false;
     this.currentPlayer = this;
     this.gameAreaEl = document.querySelector('.game-area-b');
-    this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b');
+    this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b__name');
 	}
 
 	doIWin() {

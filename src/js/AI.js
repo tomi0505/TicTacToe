@@ -15,7 +15,7 @@ class AI {
       z1: [0, 4, 8],
       z2: [2, 4, 6]
     };
-    this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b');
+    this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b__name');
 	}
 
   doIWin() {

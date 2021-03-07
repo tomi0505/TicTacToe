@@ -6,6 +6,7 @@ class App {
 	constructor() {
 		this.games = [];
 		this.secondPlayerType = '';
+		this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b');
 		this.selectGameTypeForm = document.querySelector('.start-game-form-b');
 		this.player1NameInput = document.getElementById('player1NameInput');
 		this.player2NameInput = document.getElementById('player2NameInput');
@@ -59,6 +60,7 @@ class App {
 					this.games.push(game);
 				}
 
+        this.currentPlayerMovingEl.classList.remove('current-player-moving-b--hidden');
 				e.target.classList.add('start-game-btn-b--hidden');
 				this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
 			}
