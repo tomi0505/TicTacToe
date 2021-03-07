@@ -1,3 +1,9 @@
+:root {
+  @include rwd(medium) {
+    font-size: 14px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

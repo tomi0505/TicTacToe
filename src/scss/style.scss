@@ -2,44 +2,96 @@
 @import 'mixin';
 @import 'settings';
 
+//HELPERS
+.input-h {
+  margin: 0 auto;
+  padding: 6px;
+  background-color: transparent;
+  border: 2px solid $black;
+
+  &--mt {
+    margin-top: 18px;
+  }
+
+  &--mb {
+    margin-bottom: 9px;
+  }
+}
+
 .current-player-moving-b {
+  text-align: center;
+  margin: 32px 0;
+
   &--hidden {
     display: none;
   }
 }
 
 .game-area-b {
-	display: grid;
-	grid-template-columns: repeat(3, 150px);
-	grid-template-rows: repeat(3, 150px);
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
+  justify-content: center;
 
-	&--hidden {
-		display: none;
-	}
+  @include rwd(medium) {
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+  }
 
-	&__area-simple {
-		border: 1px solid $black;
-	}
+  &--hidden {
+      display: none;
+  }
+
+  &__area-simple {
+    display: grid;
+    align-items: center;
+    font-size: 3.2rem;
+    text-align: center;
+    border: 3px solid $black;
+    border-right: 0;
+
+    &:nth-child(3n) {
+      border-right: 3px solid $black;
+    }
+
+    &:nth-child(-n+6) {
+      border-bottom: 0;
+    }
+  }
 }
 
 .start-game-form-b {
-	&--hidden {
-		display: none;
-	}
+  margin-top: 32px;
+  text-align: center;
 
-	#gameWithUser:checked {
-		& ~ #player2NameInput {
-			display: block;
-		}
-	}
+  &--hidden {
+      display: none;
+  }
 
-	#player2NameInput {
-		display: none;
-	}
+  &__game-with-ai,
+  &__game-with-user {
+    margin-top: 18px;
+  }
+
+  #gameWithUser:checked {
+      & ~ #player2NameInput {
+          display: block;
+      }
+  }
+
+  #player2NameInput {
+      display: none;
+  }
 }
 
 .start-game-btn-b {
-	&--hidden {
-		display: none;
-	}
+  margin: 27px auto 0;
+  padding: 6px 27px;
+  display: block;
+  letter-spacing: 4px;
+  border: 0;
+
+  &--hidden {
+      display: none;
+  }
 }
