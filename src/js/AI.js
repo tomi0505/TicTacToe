@@ -2,22 +2,8 @@ import Player from "./Player";
 
 class AI extends Player {
 	constructor(id, name, symbol) {
-	  super();
-		this.id = id;
+	  super(id, name, symbol);
 		this.type = 'ai';
-		this.name = name;
-		this.symbol = symbol;
-    this.choosedGameAreas = [];
-    this.winGamePattern = {
-      x1: [0, 1, 2],
-      x2: [3, 4, 5],
-      x3: [6, 7, 8],
-      y1: [0, 3, 6],
-      y2: [1, 4, 7],
-      y3: [2, 5, 8],
-      z1: [0, 4, 8],
-      z2: [2, 4, 6]
-    };
     this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b__name');
 	}
 
