@@ -38,23 +38,32 @@ class Player {
     return winner;
   }
 
+  checkUnactiveArea(player, activeArea) {
+    activeArea.classList.remove('game-area-b__area-simple--active');
+    activeArea.classList.add(`game-area-b__area-simple--select-${player.type}-${player.id}`);
+    activeArea.innerHTML = player.symbol;
+  }
+
+  markCurrentPlayer(player) {
+    this.currentPlayerMovingEl.className = '';
+    this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`, `current-player-moving-b__name--select-${player.type}-${player.id}`);
+  }
+
 	move() {
     this.currentPlayerMovingEl.textContent = this.name;
+    this.markCurrentPlayer(this);
 
     this.gameAreaEl.addEventListener('click', e => {
       if(this.nextMove && this.secondPlayer.type === 'ai') {
         const activeArea = e.target.closest('.game-area-b__area-simple--active');
 
         this.currentPlayerMovingEl.textContent = this.currentPlayer.name;
-        this.currentPlayerMovingEl.className = '';
-        this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`, `current-player-moving-b__name--select-${this.secondPlayer.type}-${this.secondPlayer.id}`);
+        this.markCurrentPlayer(this.currentPlayer.secondPlayer);
 
         if(activeArea) {
           const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
           this.choosedGameAreas.push(activeAreaIndex);
-          activeArea.classList.remove('game-area-b__area-simple--active');
-          activeArea.classList.add(`game-area-b__area-simple--select-${this.type}-${this.id}`);
-          activeArea.innerHTML = this.symbol;
+          this.checkUnactiveArea(this, activeArea);
 
           if(this.doIWin()) alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
 
@@ -67,17 +76,14 @@ class Player {
         if(activeArea) {
           const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
           this.currentPlayer.choosedGameAreas.push(activeAreaIndex);
-          activeArea.classList.remove('game-area-b__area-simple--active');
-          activeArea.classList.add(`game-area-b__area-simple--select-${this.currentPlayer.type}-${this.currentPlayer.id}`);
-          activeArea.innerHTML = this.currentPlayer.symbol;
+          this.checkUnactiveArea(this.currentPlayer, activeArea);
 
           if(this.doIWin()) alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
 
           this.currentPlayer = this.currentPlayer.secondPlayer;
           this.currentPlayerMovingEl.textContent = this.currentPlayer.name;
 
-          this.currentPlayerMovingEl.className = '';
-          this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`, `current-player-moving-b__name--select-${this.currentPlayer.type}-${this.currentPlayer.id}`);
+          this.markCurrentPlayer(this.currentPlayer);
         }
       }
     });

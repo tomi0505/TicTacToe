@@ -27,6 +27,14 @@
   }
 }
 
+.container-b {
+  margin: 190px 0 10px;
+
+  &--medium {
+    margin-top: 95px;
+  }
+}
+
 .current-player-moving-b {
   margin: 32px 0;
   text-align: center;

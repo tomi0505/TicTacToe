@@ -6,6 +6,7 @@ class App {
 	constructor() {
 		this.games = [];
 		this.secondPlayerType = '';
+		this.pageContainerEl = document.querySelector('.container-b');
 		this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b');
 		this.selectGameTypeForm = document.querySelector('.start-game-form-b');
 		this.player1NameInput = document.getElementById('player1NameInput');
@@ -40,6 +41,8 @@ class App {
 			const startGameFormValidationOK = this.startGameFormValidation();
 
 			if(startGameFormValidationOK) {
+        this.pageContainerEl.classList.add('container-b--medium');
+
 				if(this.secondPlayerType === 'ai') {
 					const userAI = new AI(0, 'AI', 'O');
 					const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');

@@ -1,5 +1,8 @@
-class AI {
+import Player from "./Player";
+
+class AI extends Player {
 	constructor(id, name, symbol) {
+	  super();
 		this.id = id;
 		this.type = 'ai';
 		this.name = name;
@@ -17,10 +20,6 @@ class AI {
     };
     this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b__name');
 	}
-
-  doIWin() {
-    console.log(this.choosedGameAreas);
-  }
 
 	drawFreeArea() {
 		let activesGamesAreasEl = document.querySelectorAll('.game-area-b__area-simple--active');
@@ -48,16 +47,12 @@ class AI {
       if(activeArea) {
         const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
         this.choosedGameAreas.push(activeAreaIndex);
-        activeArea.classList.remove('game-area-b__area-simple--active');
+        this.checkUnactiveArea(this, activeArea);
 
-        activeArea.classList.add(`game-area-b__area-simple--select-${this.type}-${this.id}`);
+        if(this.doIWin()) alert(`Gratulacje ${this.name}, WYGRAŁEŚ!`);
 
-        activeArea.innerHTML = this.symbol;
+        this.markCurrentPlayer(this.secondPlayer);
 
-        this.doIWin();
-        this.currentPlayerMovingEl.className = '';
-        this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`);
-        this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name--select-${this.secondPlayer.type}-${this.secondPlayer.id}`);
         this.secondPlayer.nextMove = true;
         this.secondPlayer.move();
       }
