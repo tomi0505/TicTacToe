@@ -43,13 +43,17 @@ class Player {
 
     this.gameAreaEl.addEventListener('click', e => {
       if(this.nextMove && this.secondPlayer.type === 'ai') {
-        this.currentPlayerMovingEl.textContent = this.currentPlayer.name;
         const activeArea = e.target.closest('.game-area-b__area-simple--active');
+
+        this.currentPlayerMovingEl.textContent = this.currentPlayer.name;
+        this.currentPlayerMovingEl.className = '';
+        this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`, `current-player-moving-b__name--select-${this.secondPlayer.type}-${this.secondPlayer.id}`);
 
         if(activeArea) {
           const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
           this.choosedGameAreas.push(activeAreaIndex);
           activeArea.classList.remove('game-area-b__area-simple--active');
+          activeArea.classList.add(`game-area-b__area-simple--select-${this.type}-${this.id}`);
           activeArea.innerHTML = this.symbol;
 
           if(this.doIWin()) alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
@@ -64,12 +68,16 @@ class Player {
           const activeAreaIndex = [...activeArea.parentNode.children].indexOf(activeArea);
           this.currentPlayer.choosedGameAreas.push(activeAreaIndex);
           activeArea.classList.remove('game-area-b__area-simple--active');
+          activeArea.classList.add(`game-area-b__area-simple--select-${this.currentPlayer.type}-${this.currentPlayer.id}`);
           activeArea.innerHTML = this.currentPlayer.symbol;
 
           if(this.doIWin()) alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
 
           this.currentPlayer = this.currentPlayer.secondPlayer;
           this.currentPlayerMovingEl.textContent = this.currentPlayer.name;
+
+          this.currentPlayerMovingEl.className = '';
+          this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`, `current-player-moving-b__name--select-${this.currentPlayer.type}-${this.currentPlayer.id}`);
         }
       }
     });

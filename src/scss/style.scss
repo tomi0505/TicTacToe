@@ -28,8 +28,16 @@
 }
 
 .current-player-moving-b {
-  text-align: center;
   margin: 32px 0;
+  text-align: center;
+
+  &__name {
+    font-weight: bold;
+
+    &--select-user-1 {
+      color: $primary-color;
+    }
+  }
 
   &--hidden {
     display: none;
@@ -69,8 +77,16 @@
       border-bottom: 0;
     }
 
+    &--select-user-1 {
+      color: $primary-color;
+    }
+
+    //&__select-user-2 {
+    //  color: $secondary-color;
+    //}
+
     &:hover {
-      background-color: $primary-light-color;
+      background-color: lighten($secondary-light-color, 4);
     }
   }
 }
