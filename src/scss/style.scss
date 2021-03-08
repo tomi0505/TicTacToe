@@ -16,6 +16,15 @@
   &--mb {
     margin-bottom: 9px;
   }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $primary-light-color inset;
+
+    &:hover,
+    &:focus {
+      -webkit-box-shadow: 0 0 0px 1000px $primary-light-color inset;
+    }
+  }
 }
 
 .current-player-moving-b {
@@ -49,6 +58,8 @@
     text-align: center;
     border: 3px solid $black;
     border-right: 0;
+    transition: background-color .4s;
+    cursor: pointer;
 
     &:nth-child(3n) {
       border-right: 3px solid $black;
@@ -56,6 +67,10 @@
 
     &:nth-child(-n+6) {
       border-bottom: 0;
+    }
+
+    &:hover {
+      background-color: $primary-light-color;
     }
   }
 }
@@ -86,10 +101,19 @@
 
 .start-game-btn-b {
   margin: 27px auto 0;
-  padding: 6px 27px;
+  padding: 8px 27px;
   display: block;
-  letter-spacing: 4px;
-  border: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  border: 2px solid $black;
+  transition: .4s;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-light-color;
+  }
 
   &--hidden {
       display: none;
