@@ -65,7 +65,9 @@ class Player {
           this.choosedGameAreas.push(activeAreaIndex);
           this.checkUnactiveArea(this, activeArea);
 
-          if(this.doIWin()) alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
+          if(this.doIWin()) {
+            alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
+          };
 
           this.nextMove = false;
           this.secondPlayer.move();

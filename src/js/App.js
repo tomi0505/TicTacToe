@@ -67,6 +67,8 @@ class App {
 				e.target.classList.add('start-game-btn-b--hidden');
 				this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
 			}
+
+      console.log('this.games: ', this.games);
 		});
 	}
 }
