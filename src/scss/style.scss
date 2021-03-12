@@ -123,7 +123,7 @@
   }
 }
 
-.start-game-btn-b {
+.primary-btn-b {
   margin: 27px auto 0;
   padding: 8px 27px;
   display: block;
@@ -139,7 +139,39 @@
     background-color: $primary-light-color;
   }
 
+  &--mt-small {
+    margin-top: 15px;
+  }
+
   &--hidden {
       display: none;
+  }
+}
+
+//MODAL
+.modal-b {
+  //display: none;
+  @include pos();
+  @include flex();
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  color: $white;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.game-winner-alert-b {
+  padding: 25px;
+  max-width: 300px;
+  border: 2px solid $black;
+  background-color: $primary-light-color;
+
+  &__title {
+    font-size: 1.3rem;
+  }
+
+  &__subtitle {
+    margin-top: 10px;
+    font-size: 0.9rem;
   }
 }
