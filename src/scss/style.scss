@@ -26,6 +26,28 @@
     }
   }
 }
+.primary-btn-h {
+  margin: 27px auto 0;
+  padding: 8px 27px;
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  border: 2px solid $black;
+  text-decoration: none;
+  color: $black;
+  transition: .4s;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-light-color;
+  }
+
+  &--mt-small {
+    margin-top: 15px;
+  }
+}
 
 .container-b {
   margin: 190px 0 10px;
@@ -89,10 +111,6 @@
       color: $primary-color;
     }
 
-    //&__select-user-2 {
-    //  color: $secondary-color;
-    //}
-
     &:hover {
       background-color: lighten($secondary-light-color, 4);
     }
@@ -123,34 +141,14 @@
   }
 }
 
-.primary-btn-b {
-  margin: 27px auto 0;
-  padding: 8px 27px;
-  display: block;
-  font-size: 0.9rem;
-  font-weight: bold;
-  letter-spacing: 3px;
-  border: 2px solid $black;
-  transition: .4s;
-  background-color: transparent;
-  cursor: pointer;
-
-  &:hover {
-    background-color: $primary-light-color;
-  }
-
-  &--mt-small {
-    margin-top: 15px;
-  }
-
+.start-game-btn-b {
   &--hidden {
-      display: none;
+    display: none;
   }
 }
 
 //MODAL
 .modal-b {
-  //display: none;
   @include pos();
   @include flex();
   width: 100%;
@@ -158,6 +156,10 @@
   text-align: center;
   color: $white;
   background-color: rgba(0, 0, 0, .4);
+
+  &--hidden {
+    display: none;
+  }
 }
 
 .game-winner-alert-b {
@@ -168,6 +170,7 @@
 
   &__title {
     font-size: 1.3rem;
+    letter-spacing: 2px;
   }
 
   &__subtitle {

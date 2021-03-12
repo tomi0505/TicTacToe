@@ -35,7 +35,7 @@ class AI extends Player {
         this.choosedGameAreas.push(activeAreaIndex);
         this.checkUnactiveArea(this, activeArea);
 
-        if(this.doIWin()) alert(`Gratulacje ${this.name}, WYGRAŁEŚ!`);
+        this.doIWin() ? this.showWinnerModal() : null;
 
         this.markCurrentPlayer(this.secondPlayer);
 

@@ -19,7 +19,14 @@ class Player {
     this.currentPlayer = this;
     this.gameAreaEl = document.querySelector('.game-area-b');
     this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b__name');
+    this.gameWinnerModalEl = document.querySelector('.modal-b');
+    this.winnerPlayerNameInModalEl = document.querySelector('.game-winner-alert-b__winner-player-name');
 	}
+
+	showWinnerModal() {
+    this.gameWinnerModalEl.classList.remove('modal-b--hidden');
+    this.winnerPlayerNameInModalEl.textContent = `${this.currentPlayer.name}`;
+  }
 
 	doIWin() {
     let winner = false;
@@ -65,9 +72,7 @@ class Player {
           this.choosedGameAreas.push(activeAreaIndex);
           this.checkUnactiveArea(this, activeArea);
 
-          if(this.doIWin()) {
-            alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
-          };
+          this.doIWin() ? this.showWinnerModal() : null;
 
           this.nextMove = false;
           this.secondPlayer.move();
@@ -80,7 +85,7 @@ class Player {
           this.currentPlayer.choosedGameAreas.push(activeAreaIndex);
           this.checkUnactiveArea(this.currentPlayer, activeArea);
 
-          if(this.doIWin()) alert(`Gratulacje ${this.currentPlayer.name}, WYGRAŁEŚ!`);
+          this.doIWin() ? this.showWinnerModal() : null;
 
           this.currentPlayer = this.currentPlayer.secondPlayer;
           this.currentPlayerMovingEl.textContent = this.currentPlayer.name;
