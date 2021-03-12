@@ -72,7 +72,10 @@ class Player {
           this.choosedGameAreas.push(activeAreaIndex);
           this.checkUnactiveArea(this, activeArea);
 
-          this.doIWin() ? this.showWinnerModal() : null;
+          if(this.doIWin()) {
+            this.showWinnerModal();
+            return;
+          }
 
           this.nextMove = false;
           this.secondPlayer.move();
@@ -85,7 +88,10 @@ class Player {
           this.currentPlayer.choosedGameAreas.push(activeAreaIndex);
           this.checkUnactiveArea(this.currentPlayer, activeArea);
 
-          this.doIWin() ? this.showWinnerModal() : null;
+          if(this.doIWin()) {
+            this.showWinnerModal();
+            return;
+          }
 
           this.currentPlayer = this.currentPlayer.secondPlayer;
           this.currentPlayerMovingEl.textContent = this.currentPlayer.name;

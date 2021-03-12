@@ -35,7 +35,10 @@ class AI extends Player {
         this.choosedGameAreas.push(activeAreaIndex);
         this.checkUnactiveArea(this, activeArea);
 
-        this.doIWin() ? this.showWinnerModal() : null;
+        if(this.doIWin()) {
+          this.showWinnerModal();
+          return;
+        }
 
         this.markCurrentPlayer(this.secondPlayer);
 
