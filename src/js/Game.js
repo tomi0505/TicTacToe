@@ -1,5 +1,6 @@
 class Game {
-	constructor(player1, player2) {
+	constructor(number, player1, player2) {
+	  this.number = number;
 		this.player1 = player1;
 		this.player2 = player2;
 		this.activePlayer = this.randStartPlayer();
@@ -10,8 +11,9 @@ class Game {
 	}
 
 	firstPlayerMove() {
+    console.log('this f: ', this);
 		if(this.activePlayer.type === 'ai') {
-			this.activePlayer.move();
+      this.activePlayer.move();
 		} else if (this.activePlayer.type === 'user') {
       this.activePlayer.nextMove = true;
 		  this.activePlayer.move();

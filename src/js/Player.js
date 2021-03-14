@@ -60,7 +60,12 @@ class Player {
     this.currentPlayerMovingEl.textContent = this.name;
     this.markCurrentPlayer(this);
 
+    console.log('this move Player: ', this);
+
     this.gameAreaEl.addEventListener('click', e => {
+      e.stopImmediatePropagation();
+      console.log('this move Player inner: ', this);
+
       if(this.nextMove && this.secondPlayer.type === 'ai') {
         const activeArea = e.target.closest('.game-area-b__area-simple--active');
 
