@@ -13,7 +13,7 @@ class App {
 		this.player2NameInput = document.getElementById('player2NameInput');
 		this.gameWithAI = document.getElementById('gameWithAI');
 		this.gameWithUser = document.getElementById('gameWithUser');
-		this.startGameBtn = document.querySelector('.start-game-btn-b');
+		this.startGameBtns = document.querySelectorAll('.start-game-btn-b');
 		this.startGameBtnHandler();
 	}
 
@@ -36,40 +36,42 @@ class App {
 	}
 
 	startGameBtnHandler() {
-		this.startGameBtn.addEventListener('click', e => {
-			this.secondPlayerType = document.querySelector('input[name="select-game-type"]:checked').value;
-			const startGameFormValidationOK = this.startGameFormValidation();
+		for(let startGameBtn of this.startGameBtns) {
+      startGameBtn.addEventListener('click', e => {
+        this.secondPlayerType = document.querySelector('input[name="select-game-type"]:checked').value;
+        const startGameFormValidationOK = this.startGameFormValidation();
 
-			if(startGameFormValidationOK) {
-        this.pageContainerEl.classList.add('container-b--medium');
+        if(startGameFormValidationOK) {
+          this.pageContainerEl.classList.add('container-b--medium');
 
-				if(this.secondPlayerType === 'ai') {
-					const userAI = new AI(0, 'AI', 'O');
-					const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
+          if(this.secondPlayerType === 'ai') {
+            const userAI = new AI(0, 'AI', 'O');
+            const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
 
-          userAI.secondPlayer = userPlayer1;
-          userPlayer1.secondPlayer = userAI;
+            userAI.secondPlayer = userPlayer1;
+            userPlayer1.secondPlayer = userAI;
 
-					const game = new Game(userAI, userPlayer1);
-					this.games.push(game);
-				} else if (this.secondPlayerType === 'user') {
-					const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
-					const userPlayer2 = new Player(2, this.player2NameInput.value, 'O');
+            const game = new Game(userAI, userPlayer1);
+            this.games.push(game);
+          } else if (this.secondPlayerType === 'user') {
+            const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
+            const userPlayer2 = new Player(2, this.player2NameInput.value, 'O');
 
-          userPlayer1.secondPlayer = userPlayer2;
-          userPlayer2.secondPlayer = userPlayer1;
+            userPlayer1.secondPlayer = userPlayer2;
+            userPlayer2.secondPlayer = userPlayer1;
 
-					const game = new Game(userPlayer1, userPlayer2);
-					this.games.push(game);
-				}
+            const game = new Game(userPlayer1, userPlayer2);
+            this.games.push(game);
+          }
 
-        this.currentPlayerMovingEl.classList.remove('current-player-moving-b--hidden');
-				e.target.classList.add('start-game-btn-b--hidden');
-				this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
-			}
+          this.currentPlayerMovingEl.classList.remove('current-player-moving-b--hidden');
+          e.target.classList.add('start-game-btn-b--hidden');
+          this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
+        }
 
-      console.log('this.games: ', this.games);
-		});
+        console.log('this.games: ', this.games);
+      });
+    }
 	}
 }
 
