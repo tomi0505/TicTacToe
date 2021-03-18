@@ -23,9 +23,16 @@ class Player {
     this.winnerPlayerNameInModalEl = document.querySelector('.game-winner-alert-b__winner-player-name');
 	}
 
-	showWinnerModal() {
+	showWinnerModal(winnerAlertName = 'Wygrałeś', draw = false) {
     this.gameWinnerModalEl.classList.remove('modal-b--hidden');
-    this.winnerPlayerNameInModalEl.textContent = `${this.currentPlayer.name}`;
+    this.winnerPlayerNameInModalEl.textContent = draw ? `${winnerAlertName}` : `${winnerAlertName} ${this.currentPlayer.name}`;
+  }
+
+  gameOverWithoutWinner() {
+    const gameAreaElChildren = [...this.gameAreaEl.children];
+    const draw = gameAreaElChildren.some(item => item.classList.contains('game-area-b__area-simple--active'));
+
+    return draw;
   }
 
 	doIWin() {
@@ -60,11 +67,8 @@ class Player {
     this.currentPlayerMovingEl.textContent = this.name;
     this.markCurrentPlayer(this);
 
-    console.log('this move Player: ', this);
-
     this.gameAreaEl.addEventListener('click', e => {
       e.stopImmediatePropagation();
-      console.log('this move Player inner: ', this);
 
       if(this.nextMove && this.secondPlayer.type === 'ai') {
         const activeArea = e.target.closest('.game-area-b__area-simple--active');
@@ -77,9 +81,13 @@ class Player {
           this.choosedGameAreas.push(activeAreaIndex);
           this.checkUnactiveArea(this, activeArea);
 
+          this.gameOverWithoutWinner();
+
           if(this.doIWin()) {
             this.showWinnerModal();
             return;
+          } else if(!this.gameOverWithoutWinner()) {
+            this.showWinnerModal('REMIS!', true);
           }
 
           this.nextMove = false;
@@ -96,6 +104,8 @@ class Player {
           if(this.doIWin()) {
             this.showWinnerModal();
             return;
+          } else if(!this.gameOverWithoutWinner()) {
+            this.showWinnerModal('REMIS!', true);
           }
 
           this.currentPlayer = this.currentPlayer.secondPlayer;

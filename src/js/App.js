@@ -89,14 +89,12 @@ class App {
       this.currentPlayerMovingEl.classList.remove('current-player-moving-b--hidden');
       this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
     }
-
-    console.log('this.games: ', this.games);
   }
 
 	startGameBtnHandler() {
     this.startGameBtn.addEventListener('click', e => {
       this.startGame();
-      e.target.classList.add('start-game-btn-b--hidden');
+      // e.target.classList.add('start-game-btn-b--hidden');
     });
     this.startGameAgainBtn.addEventListener('click', () => this.startGame());
 	}

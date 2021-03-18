@@ -11,7 +11,6 @@ class Game {
 	}
 
 	firstPlayerMove() {
-    console.log('this f: ', this);
 		if(this.activePlayer.type === 'ai') {
       this.activePlayer.move();
 		} else if (this.activePlayer.type === 'user') {
