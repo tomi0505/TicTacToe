@@ -48,6 +48,9 @@
     margin-top: 15px;
   }
 }
+.user-1-h {
+  color: $primary-color;
+}
 
 .container-b {
   margin: 190px 0 10px;
@@ -63,10 +66,6 @@
 
   &__name {
     font-weight: bold;
-
-    &--select-user-1 {
-      color: $primary-color;
-    }
   }
 
   &--hidden {
@@ -107,13 +106,38 @@
       border-bottom: 0;
     }
 
-    &--select-user-1 {
-      color: $primary-color;
-    }
-
     &:hover {
       background-color: lighten($secondary-light-color, 4);
     }
+  }
+}
+
+.game-results-panel-b {
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 100px;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid $black;
+
+  &--hidden {
+    display: none;
+  }
+
+  &__player-1,
+  &__player-2 {
+    padding: 6px;
+  }
+
+  &__player-1 {
+    border-right: 2px solid $black;
+  }
+
+  &__player-2 {
+    grid-column-end: -1;
+    border-left: 2px solid $black;
   }
 }
 

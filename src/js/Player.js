@@ -54,13 +54,13 @@ class Player {
 
   checkUnactiveArea(player, activeArea) {
     activeArea.classList.remove('game-area-b__area-simple--active');
-    activeArea.classList.add(`game-area-b__area-simple--select-${player.type}-${player.id}`);
+    activeArea.classList.add(`${player.type}-${player.id}-h`);
     activeArea.innerHTML = player.symbol;
   }
 
   markCurrentPlayer(player) {
     this.currentPlayerMovingEl.className = '';
-    this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`, `current-player-moving-b__name--select-${player.type}-${player.id}`);
+    this.currentPlayerMovingEl.classList.add(`current-player-moving-b__name`, `${player.type}-${player.id}-h`);
   }
 
 	move() {

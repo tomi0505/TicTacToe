@@ -12,6 +12,7 @@ class App {
 		this.player1NameInput = document.getElementById('player1NameInput');
 		this.player2NameInput = document.getElementById('player2NameInput');
 		this.startGameBtn = document.querySelector('.start-game-btn-b');
+		this.gameResultsPanelEl = document.querySelector('.game-results-panel-b');
 		this.startGameAgainBtn = document.querySelector('.start-new-game-again-btn-b');
     this.gameWinnerModalEl = document.querySelector('.modal-b');
 		this.startGameBtnHandler();
@@ -94,8 +95,9 @@ class App {
 	startGameBtnHandler() {
     this.startGameBtn.addEventListener('click', e => {
       this.startGame();
-      // e.target.classList.add('start-game-btn-b--hidden');
+      this.gameResultsPanelEl.classList.remove('game-results-panel-b--hidden');
     });
+
     this.startGameAgainBtn.addEventListener('click', () => this.startGame());
 	}
 }
