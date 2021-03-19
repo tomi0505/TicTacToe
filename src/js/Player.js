@@ -17,6 +17,7 @@ class Player {
     };
     this.nextMove = false;
     this.currentPlayer = this;
+    this.winner = false;
     this.gameAreaEl = document.querySelector('.game-area-b');
     this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b__name');
     this.gameWinnerModalEl = document.querySelector('.modal-b');
@@ -84,6 +85,7 @@ class Player {
           this.gameOverWithoutWinner();
 
           if(this.doIWin()) {
+            this.winner = true;
             this.showWinnerModal();
             return;
           } else if(!this.gameOverWithoutWinner()) {
@@ -102,6 +104,7 @@ class Player {
           this.checkUnactiveArea(this.currentPlayer, activeArea);
 
           if(this.doIWin()) {
+            this.winner = true;
             this.showWinnerModal();
             return;
           } else if(!this.gameOverWithoutWinner()) {

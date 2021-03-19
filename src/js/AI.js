@@ -36,6 +36,7 @@ class AI extends Player {
         this.checkUnactiveArea(this, activeArea);
 
         if(this.doIWin()) {
+          this.winner = true;
           this.showWinnerModal();
           return;
         } else if(!this.gameOverWithoutWinner()) {

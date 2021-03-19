@@ -124,8 +124,13 @@
   &__container {
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
     font-weight: bold;
     border: 2px solid $black;
+  }
+
+  &__game-counter-container {
+    padding: 6px;
   }
 
   &__player-1,

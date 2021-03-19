@@ -13,10 +13,26 @@ class App {
 		this.player2NameInput = document.getElementById('player2NameInput');
 		this.startGameBtn = document.querySelector('.start-game-btn-b');
 		this.gameResultsPanelEl = document.querySelector('.game-results-panel-b');
+    this.gameCounterEl = document.querySelector('.game-results-panel-b__game-counter');
+    this.gameResultsPanelPlayer1El = document.querySelector('.game-results-panel-b__player-1');
+    this.gameResultsPanelPlayer2El = document.querySelector('.game-results-panel-b__player-2');
 		this.startGameAgainBtn = document.querySelector('.start-new-game-again-btn-b');
     this.gameWinnerModalEl = document.querySelector('.modal-b');
 		this.startGameBtnHandler();
 	}
+
+	updateWinnerPlayers() {
+    const player1GameWinners = this.games.filter(game => {
+      return game.player1.winner === true;
+    });
+
+    const player2GameWinners = this.games.filter(game => {
+      return game.player2.winner === true;
+    });
+
+    console.log('player1GameWinners: ', player1GameWinners.length);
+    console.log('player2GameWinners: ', player2GameWinners.length);
+  }
 
   clearGameAreaEl() {
     const gameAreaEl = document.querySelector('.game-area-b');
@@ -58,6 +74,9 @@ class App {
 	}
 
 	startGame() {
+    console.log('this.games: ', this.games);
+    this.gameCounterEl.textContent = this.games.length + 1;
+    this.updateWinnerPlayers();
     this.gameWinnerModalEl.classList.add('modal-b--hidden');
     this.clearGameAreaEl();
 
