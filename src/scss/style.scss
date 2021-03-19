@@ -113,17 +113,19 @@
 }
 
 .game-results-panel-b {
-  margin: 50px auto 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  max-width: 100px;
+  margin-top: 50px;
   font-size: 0.9rem;
   text-align: center;
-  font-weight: bold;
-  border: 2px solid $black;
 
   &--hidden {
     display: none;
+  }
+
+  &__container {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-weight: bold;
+    border: 2px solid $black;
   }
 
   &__player-1,
