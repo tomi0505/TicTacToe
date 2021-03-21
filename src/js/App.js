@@ -30,8 +30,8 @@ class App {
       return game.player2.winner === true;
     });
 
-    console.log('player1GameWinners: ', player1GameWinners.length);
-    console.log('player2GameWinners: ', player2GameWinners.length);
+    this.gameResultsPanelPlayer1El.textContent = player2GameWinners.length;
+    this.gameResultsPanelPlayer2El.textContent = player1GameWinners.length;
   }
 
   clearGameAreaEl() {
@@ -94,6 +94,7 @@ class App {
         userPlayer1.secondPlayer = userAI;
 
         const game = new Game(this.games.length, userAI, userPlayer1);
+        this.gameResultsPanelPlayer1El.classList.add('user-1-h');
         this.games.push(game);
       } else if (this.secondPlayerType === 'user') {
         const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
@@ -103,6 +104,7 @@ class App {
         userPlayer2.secondPlayer = userPlayer1;
 
         const game = new Game(this.games.length, userPlayer1, userPlayer2);
+        this.gameResultsPanelPlayer2El.classList.add('user-1-h');
         this.games.push(game);
       }
 
