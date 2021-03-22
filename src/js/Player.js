@@ -104,7 +104,7 @@ class Player {
           this.checkUnactiveArea(this.currentPlayer, activeArea);
 
           if(this.doIWin()) {
-            this.winner = true;
+            this.currentPlayer.winner = true;
             this.showWinnerModal();
             return;
           } else if(!this.gameOverWithoutWinner()) {

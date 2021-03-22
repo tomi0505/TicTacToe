@@ -30,8 +30,8 @@ class App {
       return game.player2.winner === true;
     });
 
-    this.gameResultsPanelPlayer1El.textContent = player2GameWinners.length;
-    this.gameResultsPanelPlayer2El.textContent = player1GameWinners.length;
+    this.gameResultsPanelPlayer1El.textContent = player1GameWinners.length;
+    this.gameResultsPanelPlayer2El.textContent = player2GameWinners.length;
   }
 
   clearGameAreaEl() {
@@ -93,8 +93,7 @@ class App {
         userAI.secondPlayer = userPlayer1;
         userPlayer1.secondPlayer = userAI;
 
-        const game = new Game(this.games.length, userAI, userPlayer1);
-        this.gameResultsPanelPlayer1El.classList.add('user-1-h');
+        const game = new Game(this.games.length, userPlayer1, userAI);
         this.games.push(game);
       } else if (this.secondPlayerType === 'user') {
         const userPlayer1 = new Player(1, this.player1NameInput.value, 'X');
@@ -104,11 +103,11 @@ class App {
         userPlayer2.secondPlayer = userPlayer1;
 
         const game = new Game(this.games.length, userPlayer1, userPlayer2);
-        this.gameResultsPanelPlayer2El.classList.add('user-1-h');
         this.games.push(game);
       }
 
       this.currentPlayerMovingEl.classList.remove('current-player-moving-b--hidden');
+      this.gameResultsPanelEl.classList.remove('game-results-panel-b--hidden');
       this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
     }
   }
@@ -116,7 +115,6 @@ class App {
 	startGameBtnHandler() {
     this.startGameBtn.addEventListener('click', e => {
       this.startGame();
-      this.gameResultsPanelEl.classList.remove('game-results-panel-b--hidden');
     });
 
     this.startGameAgainBtn.addEventListener('click', () => this.startGame());
