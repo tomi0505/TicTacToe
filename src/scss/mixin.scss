@@ -25,3 +25,9 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+
+@mixin bg($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
