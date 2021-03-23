@@ -40,7 +40,7 @@ class AI extends Player {
           this.showWinnerModal();
           return;
         } else if(!this.gameOverWithoutWinner()) {
-          this.showWinnerModal('Remis!', true);
+          this.showWinnerModal('remis', true);
         }
 
         this.markCurrentPlayer(this.secondPlayer);

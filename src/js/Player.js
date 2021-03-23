@@ -24,7 +24,7 @@ class Player {
     this.winnerPlayerNameInModalEl = document.querySelector('.game-winner-alert-b__winner-player-name');
 	}
 
-	showWinnerModal(winnerAlertName = 'Wygrałeś', draw = false) {
+	showWinnerModal(winnerAlertName = 'wygrałeś', draw = false) {
     this.gameWinnerModalEl.classList.remove('modal-b--hidden');
     this.winnerPlayerNameInModalEl.textContent = draw ? `${winnerAlertName}` : `${winnerAlertName} ${this.currentPlayer.name}`;
   }
@@ -89,7 +89,7 @@ class Player {
             this.showWinnerModal();
             return;
           } else if(!this.gameOverWithoutWinner()) {
-            this.showWinnerModal('REMIS!', true);
+            this.showWinnerModal('remis', true);
           }
 
           this.nextMove = false;
@@ -108,7 +108,7 @@ class Player {
             this.showWinnerModal();
             return;
           } else if(!this.gameOverWithoutWinner()) {
-            this.showWinnerModal('REMIS!', true);
+            this.showWinnerModal('remis', true);
           }
 
           this.currentPlayer = this.currentPlayer.secondPlayer;
