@@ -7,7 +7,11 @@
 		<title>O i X</title>
 	</head>
 	<body>
-		<div class="game-container-b">
+		<header class="header-b">
+			<a href="index.html" class="sticky-btn-h">ZAKOŃCZ</a>
+			<button class="game-list-trigger-btn-b">WYNIKI</button>
+		</header>
+		<div class="game-container-b game-container-b--hidden">
 			<p class="current-player-moving-b current-player-moving-b--hidden">
 				teraz:
 				<span class="current-player-moving-b__name">No name</span>
@@ -40,11 +44,11 @@
 			</div>
 			<div>
 				<input type="radio" name="select-game-type" value="ai" class="start-game-form-b__game-with-ai" id="gameWithAI" checked>
-				<label for="gameWithAI">gra z komputerem</label>
+				<label for="gameWithAI" class="start-game-form-b__game-with-ai-label">gra z komputerem</label>
 			</div>
 			<div>
 				<input type="radio" name="select-game-type" value="user" class="start-game-form-b__game-with-user" id="gameWithUser">
-				<label for="gameWithUser">gra z 2-gim użytkownikiem</label>
+				<label for="gameWithUser" class="start-game-form-b__game-with-user-label">gra z 2-gim użytkownikiem</label>
 				<input type="text" name="player2-name-b" class="input-h input-h--mt" id="player2NameInput" placeholder="Imię 2-giego gracza">
 			</div>
 			<div>

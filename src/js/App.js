@@ -6,7 +6,7 @@ class App {
 	constructor() {
 		this.games = [];
 		this.secondPlayerType = '';
-		this.pageContainerEl = document.querySelector('.game-container-b');
+		this.gameContainerEl = document.querySelector('.game-container-b');
 		this.currentPlayerMovingEl = document.querySelector('.current-player-moving-b');
 		this.selectGameTypeForm = document.querySelector('.start-game-form-b');
 		this.player1NameInput = document.getElementById('player1NameInput');
@@ -51,7 +51,7 @@ class App {
       </section>
     `;
 
-    this.pageContainerEl.removeChild(gameAreaEl);
+    this.gameContainerEl.removeChild(gameAreaEl);
     this.gameResultsPanelEl.insertAdjacentHTML('beforebegin', gameaAreaElPattern);
   }
 
@@ -84,7 +84,7 @@ class App {
     const startGameFormValidationOK = this.startGameFormValidation();
 
     if(startGameFormValidationOK) {
-      this.pageContainerEl.classList.add('game-container-b--medium');
+      this.gameContainerEl.classList.add('game-container-b--medium');
 
       if(this.secondPlayerType === 'ai') {
         const userAI = new AI(0, 'AI', 'O');
@@ -106,6 +106,7 @@ class App {
         this.games.push(game);
       }
 
+      this.gameContainerEl.classList.remove('game-container-b--hidden');
       this.currentPlayerMovingEl.classList.remove('current-player-moving-b--hidden');
       this.gameResultsPanelEl.classList.remove('game-results-panel-b--hidden');
       this.selectGameTypeForm.classList.add('start-game-form-b--hidden');
