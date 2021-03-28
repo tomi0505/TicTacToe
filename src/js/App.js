@@ -25,8 +25,34 @@ class App {
 	}
 
 	renderGameResultsList() {
-    if(this.games.length > 0) {
+    this.gameResultsListEl.innerHTML = '';
 
+    if(this.games.length > 0) {
+      this.games.forEach(gameItem => {
+        const resultBoxSimpleEl = document.createElement('section');
+        resultBoxSimpleEl.classList.add('game-results-list-b__result-box-simple');
+
+        const winnerPlayer = gameItem.player1.winner ? gameItem.player1 : gameItem.player2;
+        const loserPlayer = !gameItem.player1.winner ? gameItem.player1 : gameItem.player2;
+
+        const resultBoxSimpleContentPattern = `
+        <p>
+					Wygrał
+					<span>${winnerPlayer.name}</span>
+					(<span>${winnerPlayer.choosedGameAreas.length}</span>)
+					ruchów
+				</p>
+				<p>
+					Przegrał
+					<span>${loserPlayer.name}</span>
+					(<span>${loserPlayer.choosedGameAreas.length}</span>)
+					ruchów
+				</p>
+      `;
+
+        resultBoxSimpleEl.innerHTML = resultBoxSimpleContentPattern;
+        this.gameResultsListEl.appendChild(resultBoxSimpleEl);
+      });
     }
   }
 
@@ -133,7 +159,10 @@ class App {
       this.startGame();
     });
 
-    this.startGameAgainBtn.addEventListener('click', () => this.startGame());
+    this.startGameAgainBtn.addEventListener('click', () => {
+      this.renderGameResultsList();
+      this.startGame();
+    });
 	}
 }
 
