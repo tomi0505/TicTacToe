@@ -17,9 +17,24 @@ class App {
     this.gameResultsPanelPlayer1El = document.querySelector('.game-results-panel-b__player-1');
     this.gameResultsPanelPlayer2El = document.querySelector('.game-results-panel-b__player-2');
 		this.startGameAgainBtn = document.querySelector('.start-new-game-again-btn-b');
+    this.showGameResultsListBtn = document.querySelector('.show-game-results-list-btn-b');
+    this.gameResultsListEl = document.querySelector('.game-results-list-b');
     this.gameWinnerModalEl = document.querySelector('.modal-b');
 		this.startGameBtnHandler();
+		this.showGameResultsListBtnHandler();
 	}
+
+	renderGameResultsList() {
+    if(this.games.length > 0) {
+
+    }
+  }
+
+	showGameResultsListBtnHandler() {
+    this.showGameResultsListBtn.addEventListener('click', () => {
+      this.gameResultsListEl.classList.toggle('game-results-list-b--hidden');
+    });
+  }
 
 	updateWinnerPlayers() {
     const player1GameWinners = this.games.filter(game => {

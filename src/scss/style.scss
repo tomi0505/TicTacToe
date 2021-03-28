@@ -43,6 +43,7 @@
   }
 }
 .btn-standard-h {
+  padding: 20px 10px;
   font-size: 1rem;
   text-decoration: none;
   color: $black;
@@ -73,14 +74,13 @@
     margin-top: 15px;
   }
 }
+
 .user-1-h {
   color: $primary-color;
 }
 
 .header-b {
-  position: absolute;
-  top: 0;
-  right: 0;
+  @include pos();
 }
 
 .game-container-b {
@@ -105,7 +105,7 @@
   }
 
   &--medium {
-    margin-top: 95px;
+    margin-top: 93px;
   }
 }
 
@@ -248,7 +248,19 @@
   }
 }
 
-//MODAL
+.game-results-list-b {
+  padding: 20px 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(0);
+  transition: .4s;
+
+  &--hidden {
+    transform: translateX(100%);
+  }
+}
+
 .modal-b {
   @include pos();
   @include flex();
