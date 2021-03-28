@@ -42,9 +42,15 @@
     }
   }
 }
-.sticky-btn-h {
-
+.btn-standard-h {
+  font-size: 1rem;
+  text-decoration: none;
+  color: $black;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
+
 .primary-btn-h {
   margin: 27px auto 0;
   padding: 8px 27px;

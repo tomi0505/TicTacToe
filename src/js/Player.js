@@ -24,7 +24,7 @@ class Player {
     this.winnerPlayerNameInModalEl = document.querySelector('.game-winner-alert-b__winner-player-name');
 	}
 
-	showWinnerModal(winnerAlertName = 'wygrałeś', draw = false) {
+	showWinnerModal(winnerAlertName = 'wygrał', draw = false) {
     this.gameWinnerModalEl.classList.remove('modal-b--hidden');
     this.winnerPlayerNameInModalEl.textContent = draw ? `${winnerAlertName}` : `${winnerAlertName} ${this.currentPlayer.name}`;
   }

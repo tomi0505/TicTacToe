@@ -23,6 +23,6 @@ body {
   height: 100%;
   font-family: $default-font;
   background-color: $secondary-light-color;
-  @include bg('https://picsum.photos/1920/1080');
+  @include bg('/src/img/bg1.jpg');
   overflow: hidden;
 }
