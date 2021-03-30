@@ -215,6 +215,10 @@
   text-align: center;
   border-radius: 5px;
 
+  @media(orientation: landscape) and (max-width: 767px) {
+    margin-top: 75px;
+  }
+
   &::before {
     content: '';
     @include pos();
@@ -307,7 +311,7 @@
   }
 
   &--hidden {
-    transform: translateX(100%);
+    right: calc(-100%);
 
     & ~ .hidden-area-b {
       display: none;
