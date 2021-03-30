@@ -19,7 +19,7 @@ class App {
 		this.startGameAgainBtn = document.querySelector('.start-new-game-again-btn-b');
     this.showGameResultsListBtn = document.querySelector('.show-game-results-list-btn-b');
     this.gameResultsListEl = document.querySelector('.game-results-list-b');
-    this.resultBoxSimpleEl = document.querySelector('.game-results-list-b__result-box-simple');
+    this.resultBoxesContainerEl = document.querySelector('.game-results-list-b__result-boxes-container');
     this.closeGameResultsListBtn = document.querySelector('.game-results-list-b__close-btn');
     this.gameWinnerModalEl = document.querySelector('.modal-b');
     this.init();
@@ -29,10 +29,11 @@ class App {
 	}
 
 	init() {
-	  document.body.addEventListener('click', e => {
-      // console.log('e.target: ', e.target);
-      // console.log("e.target.closest('.game-results-list-b'): ", e.target.closest('.game-results-list-b'));
-      // console.log("e.target.closest('.show-game-results-list-btn-b')", e.target.closest('.show-game-results-list-btn-b'));
+	  document.addEventListener('click', e => {
+      console.log('e.target: ', e.target);
+      console.log("e.target.closest('.game-results-list-b'): ", e.target.closest('.game-results-list-b'));
+      console.log("e.target.closest('.show-game-results-list-btn-b')", e.target.closest('.show-game-results-list-btn-b'));
+
       if(!e.target.closest('.game-results-list-b') && !e.target.closest('.show-game-results-list-btn-b')) {
         this.gameResultsListEl.classList.add('game-results-list-b--hidden');
       }
@@ -40,7 +41,7 @@ class App {
   }
 
 	renderGameResultsList() {
-    this.resultBoxSimpleEl ? this.resultBoxSimpleEl.innerHTML = '' : null;
+    this.resultBoxesContainerEl.innerHTML = '';
 
     if(this.games.length > 0) {
       this.games.forEach(gameItem => {
@@ -67,7 +68,7 @@ class App {
       `;
 
         resultBoxSimpleEl.innerHTML = resultBoxSimpleContentPattern;
-        this.gameResultsListEl.appendChild(resultBoxSimpleEl);
+        this.resultBoxesContainerEl.appendChild(resultBoxSimpleEl);
       });
     }
   }

@@ -31,3 +31,8 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+};

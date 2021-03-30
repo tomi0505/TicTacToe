@@ -25,6 +25,10 @@
     color: $black;
   }
 
+  &:focus {
+    background-color: rgba(255,255,255,.2);
+  }
+
   &--mt {
     margin-top: 18px;
   }
@@ -34,16 +38,18 @@
   }
 
   &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,.1) inset;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,.2) inset;
 
     &:hover,
     &:focus {
-      -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,.1) inset;
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-box-shadow: 0 0 0px rgba(255,255,255,.2) inset;
     }
   }
 }
 .btn-standard-h {
-  padding: 20px 10px;
+  padding: 1rem 0.6rem;
   font-size: 1rem;
   text-decoration: none;
   color: $black;
@@ -51,7 +57,6 @@
   background-color: transparent;
   cursor: pointer;
 }
-
 .primary-btn-h {
   margin: 27px auto 0;
   padding: 8px 27px;
@@ -67,7 +72,7 @@
   cursor: pointer;
 
   &:hover {
-    //background-color: $primary-light-color;
+    background-color: rgba(255,255,255,.2);
   }
 
   &--mt-small {
@@ -81,6 +86,11 @@
 
 .header-b {
   @include pos();
+  width: 100%;
+
+  @include rwd(medium) {
+    text-align: center;
+  }
 }
 
 .game-container-b {
@@ -223,18 +233,47 @@
   &__game-with-ai,
   &__game-with-user {
     margin-top: 18px;
+    appearance: none;
     cursor: pointer;
   }
 
   &__game-with-ai-label,
   &__game-with-user-label {
+    @include flex();
     cursor: pointer;
+
+    &::before {
+      content: '';
+      margin-right: 5px;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid $black;
+      background-color: transparent;
+    }
+  }
+
+  #gameWithAI:checked {
+    & + .start-game-form-b__game-with-ai-label {
+      &::before {
+        border-width: 5px;
+        background-color: $white;
+      }
+    }
   }
 
   #gameWithUser:checked {
-      & ~ #player2NameInput {
-          display: block;
+    & ~ #player2NameInput {
+        display: block;
+    }
+
+    & + .start-game-form-b__game-with-user-label {
+      &::before {
+        border-width: 5px;
+        background-color: $white;
       }
+    }
   }
 
   #player2NameInput {
