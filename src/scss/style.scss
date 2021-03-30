@@ -253,11 +253,33 @@
   position: absolute;
   top: 0;
   right: 0;
+  height: 100%;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
   transform: translateX(0);
   transition: .4s;
 
   &--hidden {
     transform: translateX(100%);
+  }
+
+  &__result-box-simple {
+    margin: 15px 0;
+  }
+
+  &__result-box-simple-title {
+    margin-bottom: 9px;
+    padding: 3px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: $white;
+    background-color: $black;
+  }
+
+  &__result-box-simple-winner-player-content {
+    &:first-of-type {
+      margin-bottom: 5px;
+    }
   }
 }
 

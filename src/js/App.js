@@ -36,13 +36,14 @@ class App {
         const loserPlayer = !gameItem.player1.winner ? gameItem.player1 : gameItem.player2;
 
         const resultBoxSimpleContentPattern = `
-        <p>
+        <h6 class="game-results-list-b__result-box-simple-title">gra ${gameItem.number + 1}</h6>
+        <p class="game-results-list-b__result-box-simple-winner-player-content">
 					Wygrał
 					<span>${winnerPlayer.name}</span>
 					(<span>${winnerPlayer.choosedGameAreas.length}</span>)
 					ruchów
 				</p>
-				<p>
+				<p class="game-results-list-b__result-box-simple-looser-player-content">
 					Przegrał
 					<span>${loserPlayer.name}</span>
 					(<span>${loserPlayer.choosedGameAreas.length}</span>)
