@@ -11,6 +11,7 @@ class App {
 		this.selectGameTypeForm = document.querySelector('.start-game-form-b');
 		this.player1NameInput = document.getElementById('player1NameInput');
 		this.player2NameInput = document.getElementById('player2NameInput');
+		this.changeWallpaperBtn = document.querySelector('.change-wallpaper-btn-b');
 		this.startGameBtn = document.querySelector('.start-game-btn-b');
 		this.gameResultsPanelEl = document.querySelector('.game-results-panel-b');
     this.gameCounterEl = document.querySelector('.game-results-panel-b__game-counter');
@@ -24,6 +25,7 @@ class App {
     this.closeGameResultsListBtn = document.querySelector('.game-results-list-b__close-btn');
     this.gameWinnerModalEl = document.querySelector('.modal-b');
     this.init();
+    this.changeWallpaperBtnHandler();
 		this.startGameBtnHandler();
 		this.showGameResultsListBtnHandler();
 		this.closeGameResultsListBtnHandler();
@@ -31,14 +33,26 @@ class App {
 
 	init() {
 	  document.addEventListener('click', e => {
-      console.log('e.target: ', e.target);
-      console.log("e.target.closest('.game-results-list-b'): ", e.target.closest('.game-results-list-b'));
-      console.log("e.target.closest('.show-game-results-list-btn-b')", e.target.closest('.show-game-results-list-btn-b'));
-
       if(!e.target.closest('.game-results-list-b') && !e.target.closest('.show-game-results-list-btn-b')) {
         this.gameResultsListEl.classList.add('game-results-list-b--hidden');
       }
     });
+  }
+
+  changeWallpaper() {
+	  fetch('https://picsum.photos/1920/1080.jpg')
+      .then(res => {
+        if(res.ok) {
+          document.body.style.backgroundImage = `url(${res.url})`;
+        } else {
+          throw new Error('błąd: ', res)
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
+  changeWallpaperBtnHandler() {
+	  this.changeWallpaperBtn.addEventListener('click', this.changeWallpaper);
   }
 
 	renderGameResultsList() {
@@ -140,7 +154,6 @@ class App {
 	}
 
 	startGame() {
-    console.log('this.games: ', this.games);
     this.gameCounterEl.textContent = this.games.length + 1;
     this.updateWinnerPlayers();
     this.gameWinnerModalEl.classList.add('modal-b--hidden');

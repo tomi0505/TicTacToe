@@ -57,6 +57,7 @@
   background-color: transparent;
   cursor: pointer;
 }
+
 .primary-btn-h {
   margin: 27px auto 0;
   padding: 8px 27px;
@@ -87,6 +88,7 @@
 .header-b {
   @include pos();
   width: 100%;
+  background-color: rgba(255,255,255,.2);
 
   @include rwd(medium) {
     text-align: center;
@@ -137,6 +139,8 @@
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
   justify-content: center;
+  -webkit-tap-highlight-color: rgba(255,255,255,.2);
+  tap-highlight-color: rgba(255,255,255,.2);
 
   @include rwd(medium) {
     grid-template-columns: repeat(3, 100px);
@@ -286,6 +290,13 @@
 }
 
 .start-game-btn-b {
+  -webkit-tap-highlight-color: rgba(255,255,255,.2);
+  tap-highlight-color: rgba(255,255,255,.2);
+
+  &:link {
+    background: green;
+  }
+
   &--hidden {
     display: none;
   }
@@ -302,7 +313,6 @@
   height: 100%;
   backdrop-filter: blur(20px);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-  //transform: translateX(0);
   transition: .4s;
   overflow: hidden;
   z-index: 998;
@@ -326,7 +336,7 @@
 
   &__title {
     text-align: center;
-    
+
     &--hidden {
       display: none;
     }
@@ -377,8 +387,9 @@
 .game-winner-alert-b {
   padding: 25px;
   max-width: 300px;
+  color: $black;
   border: 2px solid $black;
-  background-color: $primary-light-color;
+  background-color: rgba(255,255,255,0.9);
 
   &__title {
     font-size: 1.3rem;
