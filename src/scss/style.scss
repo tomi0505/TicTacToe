@@ -293,27 +293,41 @@
 
 .game-results-list-b {
   padding: 20px 10px;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   display: flex;
   flex-direction: column;
+  width: 224px;
   height: 100%;
   backdrop-filter: blur(20px);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-  transform: translateX(0);
+  //transform: translateX(0);
   transition: .4s;
   overflow: hidden;
   z-index: 998;
 
   @include rwd(medium) {
+    width: 185px;
     background-color: rgba(255,255,255,0.3);
   }
 
   &--hidden {
-    right: calc(-100%);
+    right: -224px;
+
+    @include rwd(medium) {
+      right: -185px;
+    }
 
     & ~ .hidden-area-b {
+      display: none;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    
+    &--hidden {
       display: none;
     }
   }

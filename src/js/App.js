@@ -20,6 +20,7 @@ class App {
     this.showGameResultsListBtn = document.querySelector('.show-game-results-list-btn-b');
     this.gameResultsListEl = document.querySelector('.game-results-list-b');
     this.resultBoxesContainerEl = document.querySelector('.game-results-list-b__result-boxes-container');
+    this.gameResultsListTitleEl = document.querySelector('.game-results-list-b__title');
     this.closeGameResultsListBtn = document.querySelector('.game-results-list-b__close-btn');
     this.gameWinnerModalEl = document.querySelector('.modal-b');
     this.init();
@@ -41,6 +42,7 @@ class App {
   }
 
 	renderGameResultsList() {
+    this.gameResultsListTitleEl.classList.add('game-results-list-b__title--hidden');
     this.resultBoxesContainerEl.innerHTML = '';
 
     if(this.games.length > 0) {
