@@ -39,13 +39,17 @@ class Player {
 	doIWin() {
     let winner = false;
 
+    console.log('this.choosedGameAreas: ', this.choosedGameAreas);
+
     if(this.choosedGameAreas.length > 2) {
       for(let winGamePatternItem in this.winGamePattern) {
         let winGamePatternItemValue = this.winGamePattern[winGamePatternItem];
+
         winner = winGamePatternItemValue.every(item => {
-          return this.currentPlayer.choosedGameAreas.indexOf(item) !== -1;
+          console.log('item: ', item);
         });
 
+        console.log('winner: ', winner);
         if(winner) return winner;
       }
     }

@@ -342,6 +342,11 @@
     }
   }
 
+  &__result-boxes-container {
+    max-height: 93%;
+    overflow-y: auto;
+  }
+
   &__result-box-simple {
     margin: 15px 0;
   }

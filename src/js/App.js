@@ -59,29 +59,43 @@ class App {
     this.gameResultsListTitleEl.classList.add('game-results-list-b__title--hidden');
     this.resultBoxesContainerEl.innerHTML = '';
 
+    console.log('renderGameResultsList()');
+
     if(this.games.length > 0) {
       this.games.forEach(gameItem => {
         const resultBoxSimpleEl = document.createElement('section');
         resultBoxSimpleEl.classList.add('game-results-list-b__result-box-simple');
 
-        const winnerPlayer = gameItem.player1.winner ? gameItem.player1 : gameItem.player2;
-        const loserPlayer = !gameItem.player1.winner ? gameItem.player1 : gameItem.player2;
+        let resultBoxSimpleContentPattern;
 
-        const resultBoxSimpleContentPattern = `
-        <h6 class="game-results-list-b__result-box-simple-title">gra ${gameItem.number + 1}</h6>
-        <p class="game-results-list-b__result-box-simple-winner-player-content">
-					Wygrał
-					<span>${winnerPlayer.name}</span>
-					(<span>${winnerPlayer.choosedGameAreas.length}</span>)
-					ruchów
-				</p>
-				<p class="game-results-list-b__result-box-simple-looser-player-content">
-					Przegrał
-					<span>${loserPlayer.name}</span>
-					(<span>${loserPlayer.choosedGameAreas.length}</span>)
-					ruchów
-				</p>
-      `;
+        console.log('1: ', gameItem.player1.winner);
+        console.log('2: ', gameItem.player2.winner);
+
+        if(!gameItem.player1.winner && !gameItem.player2.winner) {
+          resultBoxSimpleContentPattern = `
+            <h6 class="game-results-list-b__result-box-simple-title">gra ${gameItem.number + 1}</h6>
+            <p class="game-results-list-b__result-box-simple-draw-players-content">Remis</p>
+          `;
+        } else {
+          const winnerPlayer = gameItem.player1.winner ? gameItem.player1 : gameItem.player2;
+          const loserPlayer = !gameItem.player1.winner ? gameItem.player1 : gameItem.player2;
+
+          resultBoxSimpleContentPattern = `
+          <h6 class="game-results-list-b__result-box-simple-title">gra ${gameItem.number + 1}</h6>
+          <p class="game-results-list-b__result-box-simple-winner-player-content">
+            Wygrał
+            <span>${winnerPlayer.name}</span>
+            (<span>${winnerPlayer.choosedGameAreas.length}</span>)
+            ruchów
+          </p>
+          <p class="game-results-list-b__result-box-simple-looser-player-content">
+            Przegrał
+            <span>${loserPlayer.name}</span>
+            (<span>${loserPlayer.choosedGameAreas.length}</span>)
+            ruchów
+          </p>
+        `;
+        }
 
         resultBoxSimpleEl.innerHTML = resultBoxSimpleContentPattern;
         this.resultBoxesContainerEl.appendChild(resultBoxSimpleEl);
