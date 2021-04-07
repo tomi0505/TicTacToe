@@ -39,8 +39,6 @@ class Player {
 	doIWin() {
     let winner = false;
 
-    console.log('this.choosedGameAreas: ', this.choosedGameAreas);
-
     if(this.choosedGameAreas.length > 2) {
       for(let winGamePatternItem in this.winGamePattern) {
         let winGamePatternItemValue = this.winGamePattern[winGamePatternItem];

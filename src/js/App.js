@@ -59,17 +59,12 @@ class App {
     this.gameResultsListTitleEl.classList.add('game-results-list-b__title--hidden');
     this.resultBoxesContainerEl.innerHTML = '';
 
-    console.log('renderGameResultsList()');
-
     if(this.games.length > 0) {
       this.games.forEach(gameItem => {
         const resultBoxSimpleEl = document.createElement('section');
         resultBoxSimpleEl.classList.add('game-results-list-b__result-box-simple');
 
         let resultBoxSimpleContentPattern;
-
-        console.log('1: ', gameItem.player1.winner);
-        console.log('2: ', gameItem.player2.winner);
 
         if(!gameItem.player1.winner && !gameItem.player2.winner) {
           resultBoxSimpleContentPattern = `
