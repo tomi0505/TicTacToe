@@ -45,12 +45,11 @@ class Player {
       for(let winGamePatternItem in this.winGamePattern) {
         let winGamePatternItemValue = this.winGamePattern[winGamePatternItem];
 
-        winner = winGamePatternItemValue.every(item => {
-          console.log('item: ', item);
+        let winner = winGamePatternItemValue.filter(item => {
+          return this.choosedGameAreas.indexOf(item) !== -1;
         });
 
-        console.log('winner: ', winner);
-        if(winner) return winner;
+        if(winner.length > 2) return true;
       }
     }
 
@@ -94,6 +93,7 @@ class Player {
             return;
           } else if(!this.gameOverWithoutWinner()) {
             this.showWinnerModal('remis', true);
+            return;
           }
 
           this.nextMove = false;

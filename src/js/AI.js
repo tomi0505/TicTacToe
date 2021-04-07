@@ -41,6 +41,7 @@ class AI extends Player {
           return;
         } else if(!this.gameOverWithoutWinner()) {
           this.showWinnerModal('remis', true);
+          return;
         }
 
         this.markCurrentPlayer(this.secondPlayer);
