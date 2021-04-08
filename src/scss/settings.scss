@@ -25,7 +25,7 @@ html {
 body {
   height: 100%;
   font-family: $default-font;
-  background-color: $secondary-light-color;
+  background-color: $bg-color;
   @include bg('/src/img/bg1.jpg');
   overflow: hidden;
 }
